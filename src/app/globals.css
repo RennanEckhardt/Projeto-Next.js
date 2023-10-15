@@ -4,24 +4,53 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: #1D1B20;
+  --background-end-rgb: #1D1B20;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: #1D1B20;
+    --background-end-rgb: #1D1B20;
   }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+
 }
+
+input{
+  color: rgb(238, 238, 238);
+}
+/* Cor Primária */
+.primary {
+  color: #D0BCFF;
+}
+
+/* Cor de Fundo */
+.background {
+  background-color: #ddd3f5;
+}
+
+/* Cor de Erro */
+.erro {
+  color: #601410;
+  background-color: #e6e0f5;
+}
+
+/* Cor do Card da Lista */
+.card-lista {
+  background-color: #49454F;
+}
+
+/* Cor do Item de Lembrete */
+.item-lembrete {
+  color: #D0BCFF;
+}
+
+/* Cor da Fonte */
+.fonte {
+  color: #e3e3e3;
+} 
