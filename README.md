@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+Aplicação de Lembretes
+Este é um projeto de aplicação de lembretes desenvolvido com Next.js. A aplicação permite que os usuários criem, listem e excluam lembretes.
 
-## Getting Started
+Começando
+Siga as etapas abaixo para iniciar o servidor de desenvolvimento e executar a aplicação localmente.
 
-First, run the development server:
+Pré-requisitos
+Certifique-se de que o Node.js e o npm estejam instalados em seu sistema.
 
-```bash
+Instalação
+Clone o repositório ou baixe o código-fonte deste projeto para o seu computador.
+
+Abra um terminal de comando e navegue até a pasta raiz do projeto.
+
+Instale as dependências do projeto executando o seguinte comando:
+
+bash
+Copy code
+npm install
+Executando o Servidor de Desenvolvimento
+Após a instalação das dependências, você pode iniciar o servidor de desenvolvimento da seguinte forma:
+
+bash
+Copy code
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Isso iniciará o servidor de desenvolvimento do Next.js.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acessando a Aplicação
+Abra o seu navegador da web e acesse o seguinte URL:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+arduino
+Copy code
+http://localhost:3000
+A aplicação de lembretes estará disponível para uso no seu navegador.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Recursos Adicionais
+A aplicação de lembretes utiliza as seguintes tecnologias e recursos:
 
-## Learn More
+Tailwind CSS: O Tailwind CSS é utilizado para a estilização da aplicação, garantindo uma interface de usuário agradável.
 
-To learn more about Next.js, take a look at the following resources:
+Moment.js: A biblioteca Moment.js é usada para a manipulação de datas na aplicação, tornando o gerenciamento de lembretes baseado em data simples e eficaz.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+API REST: A aplicação se comunica com uma API REST local para persistir os dados dos lembretes. O serviço JSON Server é utilizado para fornecer essa funcionalidade.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Desenvolvimento e Contribuições
+Se desejar contribuir ou relatar problemas, sinta-se à vontade para explorar o repositório no GitHub deste projeto. Seus feedbacks e contribuições são bem-vindos!
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Licença
+Este projeto é distribuído sob a licença MIT. Consulte o arquivo LICENSE para obter detalhes.

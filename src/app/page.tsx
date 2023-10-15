@@ -1,39 +1,40 @@
 'use client';
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
-import 'tailwindcss/tailwind.css';
-import 'moment/locale/pt-br';
-import moment from 'moment';
-import { FormEvent, useState, useEffect } from "react";
+import "bootstrap/dist/css/bootstrap.min.css"; // Importa o estilo CSS do Bootstrap para estilizar a aplicação.
+import "bootstrap-icons/font/bootstrap-icons.css"; // Importa os ícones do Bootstrap.
+import 'tailwindcss/tailwind.css'; // Importa os estilos do Tailwind CSS.
+import 'moment/locale/pt-br';// Importa a localização do Moment.js para o Português do Brasil.
+import moment from 'moment';// Importa a biblioteca Moment.js para manipulação de datas.
+import { FormEvent, useState, useEffect } from "react";  // Importa hooks e componentes do React.
 export default function Home() {
-  moment.locale('pt-br'); 
-  const [name, setNome] = useState("");
-  const [date, setData] = useState("");
-  const [lembretes, setLembretes] = useState([]);
-  const [error, setError] = useState("");
+  moment.locale('pt-br'); // Configura a localização do Moment.js para o Português do Brasil.
+  const [name, setNome] = useState(""); // Estado para armazenar o nome do lembrete.
+  const [date, setData] = useState(""); // Estado para armazenar a data do lembrete.
+  const [lembretes, setLembretes] = useState([]); // Estado para armazenar a lista de lembretes.
+  const [error, setError] = useState(""); // Estado para armazenar mensagens de erro.
 
+ // O hook useEffect é usado para executar a função setarDados() quando o componente é montado.
   useEffect(() => {
     setarDados();
   }, []);
-
+ // Declaração da função "submit" chamada quando o formulário é submetido.
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-
+    // Verifica se os campos obrigatorios estao preenchidos corretamente
     if (!name || !date) {
       setError("Por favor, preencha todos os campos.");
       return;
     }
 
+    //Verifica a data
     const dataatual = new Date();
     const dataselecionada = new Date(date);
-
     if (dataselecionada <= dataatual) {
       setError("A data deve ser maior que a data atual.");
       return;
     }
 
     setError("");
-
+    // Faz uma requisição POST para adicionar um novo lembrete ao servidor.
     const response = await fetch('http://localhost:3004/posts', {
       method: 'POST',
       body: JSON.stringify({ name, date }),
@@ -44,10 +45,10 @@ export default function Home() {
 
     setNome("");
     setData("");
-
+    //Chama a funçao para gravar os dados novos na variavel de exibiçao
     await setarDados();
   }
-
+//Busca os novos dados no banco e os adicionar a variavel lembretes
   async function setarDados() {
     const BuscaDados = await fetch('http://localhost:3004/posts', {
       method: 'GET',
@@ -58,16 +59,16 @@ export default function Home() {
     const dados = await BuscaDados.json();
     setLembretes(dados);
   }
-
+ //Ordena os dados em ordem de data mais recente para mais longe e os separa por data
   function ordenarLembretes(lembretes: any) {
     const ordenarlembrete: Record<string, any[]> = {};
-
+    //ordena os dados
     lembretes.sort((b:any, a:any) => {
       const dataA = new Date(a.date);
       const dataB = new Date(b.date);
       return (dataB as any) - (dataA as any);
     });
-
+    //separa os eventos por data
     lembretes.forEach((lembrete: any) => {
       const data = lembrete.date;
       if (!ordenarlembrete[data]) {
@@ -76,10 +77,11 @@ export default function Home() {
 
       ordenarlembrete[data].push(lembrete);
     });
-    console.log(ordenarlembrete)
+    //retorna as datas e os lembretes ja ordenados 
     return ordenarlembrete;
   }
 
+  //Exclui os lembretes atravez do id recebido   
   const excluirLembrete = async (data: string, lembrete: any) => {
     const deletaDados = await fetch('http://localhost:3004/posts/' + lembrete['id'], {
       method: 'DELETE',
@@ -87,10 +89,11 @@ export default function Home() {
         "Content-Type": "application/json",
       }
     });
-
+  //atualiza os dados no banco
     await setarDados();
   };
 
+  //Busca os lembretes ja ordenados e atualizados para exibir
   const lembretesOrdenados = ordenarLembretes(lembretes);
 
   return (
