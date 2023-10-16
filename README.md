@@ -2,6 +2,9 @@
 
 Este é um projeto de aplicação de lembretes desenvolvido com Next.js. A aplicação permite que os usuários criem, listem e excluam lembretes.
 
+#Link da Especificaçao
+https://drive.google.com/file/d/1cCH5l47FRnVlzU23zvv10NPfd_ZiOK2W/view
+
 ## Começando
 
 Siga as etapas abaixo para iniciar o servidor de desenvolvimento e executar a aplicação localmente.
